@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<image schemaversion="6.5" name="opensuse-cowsay">
+  <description type="system">
+    <author>David Cassany</author>
+    <contact>dcassany@suse.com</contact>
+    <specification>Cowsay running on a openSUSE docker guest</specification>
+  </description>
+  <preferences>
+    <type 
+      image="docker"
+      derived_from="docker://opensuse:42.2">
+      <containerconfig
+        name="opensuse/cowsay"
+        maintainer="David Cassany &lt;dcassany@suse.com&gt;">
+        <entrypoint execute="entrypoint"/>
+        <!-- Lets clear any subcommand inherited from the base image -->
+        <subcommand clear="true"/>
+      </containerconfig> 
+    </type>
+    <version>1.0.0</version>
+    <packagemanager>zypper</packagemanager>
+  </preferences>
+  <users>
+    <user home="/root" name="root" groups="root"/>
+  </users>
+  <repository type="rpm-md" alias="updates">
+    <source path="obs://openSUSE:Leap:42.2:Update/standard"/>
+  </repository>
+  <repository type="rpm-md" alias="base">
+    <source path="obs://openSUSE:Leap:42.2/standard"/>
+  </repository>
+  <packages type="image">
+    <package name="fortune"/>
+    <package name="cowsay"/>
+  </packages>
+</image>

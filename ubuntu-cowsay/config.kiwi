@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<image schemaversion="6.5" name="ubuntu-cowsay">
+  <description type="system">
+    <author>David Cassany</author>
+    <contact>dcassany@suse.com</contact>
+    <specification>Cowsay running on a Ubuntu docker guest</specification>
+  </description>
+  <preferences>
+    <type 
+      image="docker"
+      derived_from="docker://ubuntu:xenial">
+      <containerconfig
+        name="ubuntu/cowsay"
+        maintainer="David Cassany &lt;dcassany@suse.com&gt;">
+        <entrypoint execute="entrypoint"/>
+        <!-- Lets clear any subcommand inherited from the base image -->
+        <subcommand clear="true"/>
+      </containerconfig> 
+    </type>
+    <version>1.0.0</version>
+    <packagemanager>apt-get</packagemanager>
+  </preferences>
+  <users>
+    <user home="/root" name="root" groups="root"/>
+  </users>
+  <repository type="apt-deb" distribution="xenial" components="main multiverse restricted universe">
+    <source path="http://archive.ubuntu.com/ubuntu"/>
+  </repository>
+  <packages type="image">
+    <package name="fortunes"/>
+    <package name="cowsay"/>
+  </packages>
+</image>
