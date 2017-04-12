@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<image schemaversion="6.5" name="debian-cowsay">
+  <description type="system">
+    <author>David Cassany</author>
+    <contact>dcassany@suse.com</contact>
+    <specification>Cowsay running on a Debian docker guest</specification>
+  </description>
+  <preferences>
+    <type 
+      image="docker"
+      derived_from="docker://debian:jessie">
+      <containerconfig
+        name="debian/cowsay"
+        maintainer="David Cassany &lt;dcassany@suse.com&gt;">
+        <entrypoint execute="entrypoint"/>
+        <!-- Lets clear any subcommand inherited from the base image -->
+        <subcommand clear="true"/>
+      </containerconfig> 
+    </type>
+    <version>1.0.0</version>
+    <packagemanager>apt-get</packagemanager>
+  </preferences>
+  <repository type="apt-deb" distribution="jessie" components="main" alias="jessie">
+    <source path="http://deb.debian.org/debian"/>
+  </repository> 
+  <repository type="apt-deb" distribution="jessie-updates" components="main" alias="jessie-updates">
+    <source path="http://deb.debian.org/debian"/>
+  </repository>
+  <repository type="apt-deb" distribution="jessie/updates" components="main" alias="jessie-security-updates">
+    <source path="http://security.debian.org"/>
+  </repository>
+  <users>
+    <user home="/root" name="root" groups="root"/>
+  </users>
+  <packages type="image">
+    <package name="fortunes"/>
+    <package name="cowsay"/>
+  </packages>
+</image>

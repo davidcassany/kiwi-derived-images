@@ -1,0 +1,9 @@
+#!/bin/bash
+
+export PATH="$PATH:/usr/games"
+
+if [[ $# -eq 0 ]]; then
+    fortune | cowsay -f $(ls /usr/share/cowsay/cows | shuf -n1)
+else
+    cowsay -f $(ls /usr/share/cowsay/cows | shuf -n1) $@
+fi
