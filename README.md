@@ -7,3 +7,7 @@ perform the build.
 
 Kiwi supports zypper, dnf, yum and apt package managers, so the example derived images are based on
 openSUSE, Fedora, CentOS, Ubuntu and Debian.
+
+# Cowsay appliance
+
+All derived images provide the same simple toy, a container that runs **fortune** stdout to a random **cowsay**.
