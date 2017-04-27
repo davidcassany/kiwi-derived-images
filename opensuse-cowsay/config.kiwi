@@ -9,7 +9,7 @@
   <preferences>
     <type 
       image="docker"
-      derived_from="docker://opensuse:42.2">
+      derived_from="docker://opensuse">
       <containerconfig
         name="opensuse/cowsay"
         maintainer="David Cassany &lt;dcassany@suse.com&gt;">
@@ -24,12 +24,7 @@
   <users>
     <user home="/root" name="root" groups="root"/>
   </users>
-  <repository type="rpm-md" alias="updates">
-    <source path="obs://openSUSE:Leap:42.2:Update/standard"/>
-  </repository>
-  <repository type="rpm-md" alias="base">
-    <source path="obs://openSUSE:Leap:42.2/standard"/>
-  </repository>
+  <repository baserepos="true"/>
   <packages type="image">
     <package name="fortune"/>
     <package name="cowsay"/>

@@ -24,17 +24,9 @@
   <users>
     <user home="/root" name="root" groups="root"/>
   </users>
-  <repository type="rpm-md" alias="updates">
-    <source path="http://mirror.centos.org/centos/$releasever/updates/$basearch/"/>
-  </repository>
-  <repository type="rpm-md" alias="extras">
-    <source path="http://mirror.centos.org/centos/$releasever/extras/$basearch/"/>
-  </repository>
-  <repository type="rpm-md" alias="epel">
+  <repository baserepos="true"/> 
+  <repository type="rpm-md" alias="epel" imageinclude="true">
     <source path="http://download.fedoraproject.org/pub/epel/7/$basearch"/>
-  </repository>
-  <repository type="rpm-md" alias="base">
-    <source path="http://mirror.centos.org/centos/$releasever/os/$basearch/"/>
   </repository>
   <packages type="image">
     <package name="fortune-mod"/>

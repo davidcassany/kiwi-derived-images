@@ -9,7 +9,7 @@
   <preferences>
     <type 
       image="docker"
-      derived_from="docker://ubuntu:xenial">
+      derived_from="docker://ubuntu">
       <containerconfig
         name="ubuntu/cowsay"
         maintainer="David Cassany &lt;dcassany@suse.com&gt;">
@@ -24,9 +24,7 @@
   <users>
     <user home="/root" name="root" groups="root"/>
   </users>
-  <repository type="apt-deb" distribution="xenial" components="main multiverse restricted universe">
-    <source path="http://archive.ubuntu.com/ubuntu"/>
-  </repository>
+  <repository baserepos="true"/> 
   <packages type="image">
     <package name="fortunes"/>
     <package name="cowsay"/>

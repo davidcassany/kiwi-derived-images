@@ -9,7 +9,7 @@
   <preferences>
     <type 
       image="docker"
-      derived_from="docker://debian:jessie">
+      derived_from="docker://debian">
       <containerconfig
         name="debian/cowsay"
         maintainer="David Cassany &lt;dcassany@suse.com&gt;">
@@ -21,15 +21,7 @@
     <version>1.0.0</version>
     <packagemanager>apt-get</packagemanager>
   </preferences>
-  <repository type="apt-deb" distribution="jessie" components="main" alias="jessie">
-    <source path="http://deb.debian.org/debian"/>
-  </repository> 
-  <repository type="apt-deb" distribution="jessie-updates" components="main" alias="jessie-updates">
-    <source path="http://deb.debian.org/debian"/>
-  </repository>
-  <repository type="apt-deb" distribution="jessie/updates" components="main" alias="jessie-security-updates">
-    <source path="http://security.debian.org"/>
-  </repository>
+  <repository baserepos="true"/> 
   <users>
     <user home="/root" name="root" groups="root"/>
   </users>
