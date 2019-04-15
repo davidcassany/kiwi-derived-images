@@ -7,9 +7,8 @@
     <specification>Cowsay running on a CentOS docker guest</specification>
   </description>
   <preferences>
-    <type 
-      image="docker"
-      derived_from="docker://centos:7">
+    <!-- docker-daemon transport requires to docker pull the image in advance -->
+    <type image="docker" derived_from="docker-daemon:centos:7">
       <containerconfig
         name="centos/cowsay"
         maintainer="David Cassany &lt;dcassany@suse.com&gt;">
@@ -25,17 +24,21 @@
     <user home="/root" name="root" groups="root"/>
   </users>
   <repository type="rpm-md" alias="updates">
-    <source path="http://mirror.centos.org/centos/$releasever/updates/$basearch/"/>
+    <source path="http://mirror.centos.org/centos/7/updates/x86_64/"/>
   </repository>
   <repository type="rpm-md" alias="extras">
-    <source path="http://mirror.centos.org/centos/$releasever/extras/$basearch/"/>
+    <source path="http://mirror.centos.org/centos/7/extras/x86_64/"/>
   </repository>
   <repository type="rpm-md" alias="epel">
-    <source path="http://download.fedoraproject.org/pub/epel/7/$basearch"/>
+    <source path="http://download.fedoraproject.org/pub/epel/7/x86_64"/>
   </repository>
   <repository type="rpm-md" alias="base">
-    <source path="http://mirror.centos.org/centos/$releasever/os/$basearch/"/>
+    <source path="http://mirror.centos.org/centos/7/os/x86_64/"/>
   </repository>
+  <packages type="bootstrap">
+    <package name="nextgen-yum4"/>
+    <package name="dnf"/>
+  </packages>
   <packages type="image">
     <package name="fortune-mod"/>
     <package name="cowsay"/>

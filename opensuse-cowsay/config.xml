@@ -7,9 +7,8 @@
     <specification>Cowsay running on a openSUSE docker guest</specification>
   </description>
   <preferences>
-    <type 
-      image="docker"
-      derived_from="docker://opensuse:42.2">
+    <!-- docker-daemon transport requires to docker pull the image in advance -->
+    <type image="docker" derived_from="docker-daemon:opensuse/leap:15.0">
       <containerconfig
         name="opensuse/cowsay"
         maintainer="David Cassany &lt;dcassany@suse.com&gt;">
@@ -25,10 +24,10 @@
     <user home="/root" name="root" groups="root"/>
   </users>
   <repository type="rpm-md" alias="updates">
-    <source path="obs://openSUSE:Leap:42.2:Update/standard"/>
+    <source path="obs://openSUSE:Leap:15.0:Update/standard"/>
   </repository>
   <repository type="rpm-md" alias="base">
-    <source path="obs://openSUSE:Leap:42.2/standard"/>
+    <source path="obs://openSUSE:Leap:15.0/standard"/>
   </repository>
   <packages type="image">
     <package name="fortune"/>

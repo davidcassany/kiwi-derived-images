@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<image schemaversion="6.5" name="fedora-cowsay">
+<image schemaversion="7.0" name="fedora-cowsay">
   <description type="system">
     <author>David Cassany</author>
     <contact>dcassany@suse.com</contact>
     <specification>Cowsay running on a Fedora docker guest</specification>
   </description>
   <preferences>
-    <type 
-      image="docker"
-      derived_from="docker://fedora:25">
+    <!-- docker-daemon transport requires to docker pull the image in advance -->
+    <type image="docker" derived_from="docker-daemon:fedora:29">
       <containerconfig
         name="fedora/cowsay"
         maintainer="David Cassany &lt;dcassany@suse.com&gt;">
@@ -24,11 +23,11 @@
   <users>
     <user home="/root" name="root" groups="root"/>
   </users>
-  <repository type="rpm-md" alias="Fedora25">
-    <source path="http://ftp.fau.de/fedora/linux/releases/25/Everything/x86_64/os"/>
+  <repository type="rpm-md" alias="Fedora29">
+    <source path="http://ftp.fau.de/fedora/linux/releases/29/Everything/x86_64/os"/>
   </repository>
-  <repository type="rpm-md" alias="Fedora25-updates">
-    <source path="http://ftp.fau.de/fedora/linux/updates/25/x86_64"/>
+  <repository type="rpm-md" alias="Fedora29-updates">
+    <source path="http://ftp.fau.de/fedora/linux/updates/29/x86_64"/>
   </repository>
   <packages type="image">
     <package name="fortune-mod"/>
